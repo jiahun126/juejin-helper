@@ -122,7 +122,7 @@ class LotteriesTask extends Task {
     while (freeCount > 0) {
       const result = await growth.drawLottery();
       this.drawLotteryHistory[result.lottery_id] = (this.drawLotteryHistory[result.lottery_id] || 0) + 1;
-      dipLuckyTask.luckyValue = result.total_lucky_value;
+      // dipLuckyTask.luckyValue = result.total_lucky_value;
       freeCount--;
       this.lotteryCount++;
       await utils.wait(utils.randomRangeNumber(300, 1000));
@@ -138,7 +138,7 @@ class LotteriesTask extends Task {
       for (let i = 0, length = Math.floor(totalDrawsNumber * 0.65); i < length; i++) {
         supplyPoint += Math.ceil(Math.random() * 100);
       }
-      const luckyValue = ((sumPoint + supplyPoint) / pointCost) * luckyValueCost + dipLuckyTask.luckyValue;
+      const luckyValue = ((sumPoint + supplyPoint) / pointCost) * luckyValueCost ;
       return luckyValue / 6000;
     };
 
@@ -244,9 +244,9 @@ class CheckIn {
     this.username = juejin.getUser().user_name;
 
     this.growthTask = new GrowthTask(juejin);
-    this.dipLuckyTask = new DipLuckyTask(juejin);
+    // this.dipLuckyTask = new DipLuckyTask(juejin);
     this.lotteriesTask = new LotteriesTask(juejin);
-    this.bugfixTask = new BugfixTask(juejin);
+    // this.bugfixTask = new BugfixTask(juejin);
     this.sdkTask = new SdkTask(juejin);
     this.mockVisitTask = new MockVisitTask(juejin);
 
@@ -254,12 +254,12 @@ class CheckIn {
     await this.sdkTask.run();
     console.log(`运行 ${this.growthTask.taskName}`);
     await this.growthTask.run();
-    console.log(`运行 ${this.dipLuckyTask.taskName}`);
-    await this.dipLuckyTask.run();
+    // console.log(`运行 ${this.dipLuckyTask.taskName}`);
+    // await this.dipLuckyTask.run();
     console.log(`运行 ${this.lotteriesTask.taskName}`);
     await this.lotteriesTask.run(this.growthTask, this.dipLuckyTask);
-    console.log(`运行 ${this.bugfixTask.taskName}`);
-    await this.bugfixTask.run();
+    // console.log(`运行 ${this.bugfixTask.taskName}`);
+    // await this.bugfixTask.run();
     await juejin.logout();
     console.log("-------------------------");
 
