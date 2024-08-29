@@ -286,13 +286,7 @@ ${
     2: "今日已完成签到"
   }[this.growthTask.todayStatus]
 }
-${
-  {
-    0: "沾喜气失败",
-    1: `沾喜气 +${this.dipLuckyTask.dipValue} 幸运值`,
-    2: "今日已经沾过喜气"
-  }[this.dipLuckyTask.dipStatus]
-}
+
 ${
   this.bugfixTask.bugStatus === 1
     ? this.bugfixTask.collectBugCount > 0
