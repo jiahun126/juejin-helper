@@ -123,7 +123,6 @@ class LotteriesTask extends Task {
     while (freeCount > 0) {
       const result = await growth.drawLottery();
       this.drawLotteryHistory[result.lottery_id] = (this.drawLotteryHistory[result.lottery_id] || 0) + 1;
-      console.log("------获取抽奖信息-------"+result);
       this.dipLuckyTask.luckyValue = result.total_lucky_value;
       freeCount--;
       this.lotteryCount++;
