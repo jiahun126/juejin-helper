@@ -117,8 +117,6 @@ class LotteriesTask extends Task {
     this.pointCost = lotteryConfig.point_cost;
     this.freeCount = lotteryConfig.free_count;
     this.lotteryCount = 0;
-
-    let freeCount = this.freeCount;
     let freeCount = this.freeCount;
     while (freeCount > 0) {
       const result = await growth.drawLottery();
